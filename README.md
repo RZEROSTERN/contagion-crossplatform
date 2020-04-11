@@ -37,7 +37,7 @@ I want to say thanks to Michael Hicks because with his main tutorial I could be 
 
 Also, as always, I want to thank all gamedev fellas. Karaokulta for organizing everything even when we were quarantined. Thanks to Starzy, Draic, Chemasmas, Kiramishima, Alastor, Aikas the Bard, the Iterandos', Mrs Blackcat, the FitFat fellas and all of the buddies that approach to me for at least saying hello or "Come on, get on your feet and start this game !!!"
 
-Also, I want to dedicate my effort to the master, the greates gamer in Mexico: Gus Rodriguez, wherever you are, this is for you.
+Also, I want to dedicate my effort to the master, the greatest gamer in Mexico: Gus Rodriguez, wherever you are, this is for you.
 
 Finally I want to thank all of jammers. This is from a gamer to all gamers.
 
