@@ -1,6 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Contagion_CrossPlatform.Source.Game.States;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
 
 namespace Contagion_CrossPlatform
 {
@@ -11,6 +14,14 @@ namespace Contagion_CrossPlatform
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        private State _currentState;
+        private State _nextState;
+
+        public void ChangeState(State state)
+        {
+            _nextState = state;
+        }
         
         public Game1()
         {
@@ -26,7 +37,7 @@ namespace Contagion_CrossPlatform
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            IsMouseVisible = true;
 
             base.Initialize();
         }
@@ -39,8 +50,7 @@ namespace Contagion_CrossPlatform
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
+            _currentState = new MenuState(this, graphics.GraphicsDevice, Content);
         }
 
         /// <summary>
@@ -59,10 +69,16 @@ namespace Contagion_CrossPlatform
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            /*if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();*/
+            if(_nextState != null)
+            {
+                _currentState = _nextState;
+                _nextState = null;
+            }
 
-            // TODO: Add your update logic here
+            _currentState.Update(gameTime);
+            _currentState.PostUpdate(gameTime);
 
             base.Update(gameTime);
         }
@@ -75,7 +91,7 @@ namespace Contagion_CrossPlatform
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            _currentState.Draw(gameTime, spriteBatch);
 
             base.Draw(gameTime);
         }
