@@ -23,14 +23,15 @@ I'm just a developer, so I used **royalty free** assets and music. Their authors
 - Hero: Made by tokka https://opengameart.org/users/tokka and licensed under Creative Commons CC-BY-3.0. Link at original https://opengameart.org/content/2d-hero.
 
 ## Technical Stack
-- C# with FNA. 
-- For assets I've used MonoGame for compiling XNB files for fonts.
+- C# with Monogame. 
 
 # Pre-requisites for executing
+## Windows
 You must install the Microsoft XNA FX 4.0 Redistributable. You may download it here:
-
 https://www.microsoft.com/en-us/download/details.aspx?id=20914
 
+## MacOS and Linux
+Until now, there are no pre-requisites.
 
 # Special acknowledgments
 I want to say thanks to Michael Hicks because with his main tutorial I could be able to keep going this small game. If you see this, I'll give you at least a beer for the teachings you gave to the game development community.
@@ -42,11 +43,13 @@ Also, I want to dedicate my effort to the master, the greatest gamer in Mexico: 
 Finally I want to thank all of jammers. This is from a gamer to all gamers.
 
 # System Requirements
-- **OS:** Windows 7 or newer (MacOS and Linux coming soon)
+
+- **OS:** Windows 7 or newer | MacOS Lion 10.7.5, 32/64-bit | Any Linux distribution with glibc 2.17+, 32/64-bit
 - **Processor:** Intel Core i3 M380
 - **Memory:** 2 GB RAM
 - **Graphics:** Intel HD 4000
-- **DirectX:** Version 10
+- **DirectX:** Version 10 (only applies for Windows)
+- **OpenGL:* 3.0+ (2.1 with ARB extensions acceptable)
 - **Storage:** 100 MB available space. The space will be increased within the updates.
 
 # Want to collaborate ?
