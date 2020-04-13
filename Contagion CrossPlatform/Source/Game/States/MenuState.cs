@@ -7,26 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contagion_CrossPlatform.Source.Game.States
+namespace Contagion_CrossPlatform
 {
     public class MenuState : State
     {
         private List<Component> _gameComponents;
         private Color _backgroundColour = Color.CornflowerBlue;
+        Texture2D mainTitleImage;
         public MenuState(Game1 game, GraphicsDevice graphicsDevice, ContentManager contentManager) : base(game, graphicsDevice, contentManager)
         {
             var buttonTexture = _content.Load<Texture2D>("Controls\\Button");
-            var buttonFont = _content.Load<SpriteFont>("Fonts\\Font");
+            var buttonFont = _content.Load<SpriteFont>("Fonts\\gamer");
 
             var newGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(350, 200),
+                Position = new Vector2((_game.GraphicsDevice.Viewport.Width / 2) - 65, (_game.GraphicsDevice.Viewport.Width / 3)),
                 Text = "New Game",
             };
 
             var quitGameButton = new Button(buttonTexture, buttonFont)
             {
-                Position = new Vector2(350, 250),
+                Position = new Vector2((_game.GraphicsDevice.Viewport.Width / 2) - 65, (_game.GraphicsDevice.Viewport.Width / 3) + 50),
                 Text = "Quit",
             };
 
@@ -42,6 +43,10 @@ namespace Contagion_CrossPlatform.Source.Game.States
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
+
+            mainTitleImage = TextureLoader.Load("Misc\\MainMenu\\titlescreen", _content);
+
+            spriteBatch.Draw(mainTitleImage, Vector2.Zero, Color.White);
 
             foreach (var component in _gameComponents)
             {

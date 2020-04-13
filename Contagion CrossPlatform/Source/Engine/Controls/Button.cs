@@ -41,16 +41,17 @@ namespace Contagion_CrossPlatform
         {
             _texture = texture;
             _font = font;
-            PenColour = Color.Black;
+            PenColour = Color.White;
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            var colour = Color.White;
+            var colour = Color.FromNonPremultiplied(0,0,0, 255);
 
             if (_isHovering)
             {
-                colour = Color.Gray;
+                colour = Color.White;
+                PenColour = Color.Black;
             }
 
             spriteBatch.Draw(_texture, Rectangle, colour);

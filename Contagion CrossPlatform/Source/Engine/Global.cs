@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contagion_CrossPlatform.Source.Engine
+namespace Contagion_CrossPlatform
 {
     public class Global
     {

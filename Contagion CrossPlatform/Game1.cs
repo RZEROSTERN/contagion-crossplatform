@@ -1,5 +1,4 @@
-﻿using Contagion_CrossPlatform.Source.Game.States;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -27,6 +26,10 @@ namespace Contagion_CrossPlatform
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            Resolution.Init(ref graphics);
+            Resolution.SetVirtualResolution(1280, 704);
+            Resolution.SetResolution(1280, 720, false);
         }
 
         /// <summary>
@@ -50,7 +53,9 @@ namespace Contagion_CrossPlatform
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            _currentState = new MenuState(this, graphics.GraphicsDevice, Content);
+            Tiles.Content = Content;
+            // _currentState = new MenuState(this, graphics.GraphicsDevice, Content);
+            _currentState = new SplashScreenState(this, graphics.GraphicsDevice, Content);
         }
 
         /// <summary>
@@ -89,7 +94,7 @@ namespace Contagion_CrossPlatform
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             _currentState.Draw(gameTime, spriteBatch);
 
