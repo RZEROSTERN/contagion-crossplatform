@@ -14,6 +14,8 @@ namespace Contagion_CrossPlatform
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        public Camera camera;
+
         private State _currentState;
         private State _nextState;
 
@@ -54,7 +56,8 @@ namespace Contagion_CrossPlatform
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Tiles.Content = Content;
-            // _currentState = new MenuState(this, graphics.GraphicsDevice, Content);
+            camera = new Camera(GraphicsDevice.Viewport);
+            
             _currentState = new SplashScreenState(this, graphics.GraphicsDevice, Content);
         }
 

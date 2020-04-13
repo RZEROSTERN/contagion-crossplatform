@@ -52,6 +52,9 @@ namespace Contagion_CrossPlatform
             {
                 colour = Color.White;
                 PenColour = Color.Black;
+            } else
+            {
+                PenColour = Color.White;
             }
 
             spriteBatch.Draw(_texture, Rectangle, colour);

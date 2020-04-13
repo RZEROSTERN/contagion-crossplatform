@@ -35,7 +35,7 @@ namespace Contagion_CrossPlatform
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, _game.camera.Transform);
             map.Draw(spriteBatch);
             hero.Draw(spriteBatch);
             spriteBatch.End();
@@ -51,7 +51,11 @@ namespace Contagion_CrossPlatform
             hero.Update(gameTime);
 
             foreach (CollisionTiles tile in map.CollisionTiles)
+            {
                 hero.Collision(tile.Rectangle, map.Width, map.Height);
+                _game.camera.Update(hero.Position, map.Width, map.Height);
+            }
+
         }
     }
 }
