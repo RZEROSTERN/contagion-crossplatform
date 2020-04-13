@@ -25,6 +25,12 @@ I'm just a developer, so I used **royalty free** assets and music. Their authors
 ## Technical Stack
 - C# with Monogame. 
 
+## Updates
+- Added the ScreenManager (handles states into the whole game).
+- Added a tilemap/tilesheet reader for making the stages.
+- Modifided the camera mechanism for use with the current architecture.
+- Added multiplatform support
+
 # Pre-requisites for executing
 ## Windows
 You must install the Microsoft XNA FX 4.0 Redistributable. You may download it here:
@@ -63,17 +69,20 @@ Feel free to send me a DM via Github or an email to <marco.ramirez@dev1.mx> with
 You must have some skills with .NET and C#. Right now the use of Microsoft Visual Studio is required.
 
 ## Next steps
-- Screen Manager (right now the transition between main and play screens is very rudimentary and there's no pause).
-- 
+- HUD refactoring.
+- Enemies and bullets refactoring.
+- Construction of the first full stage.
 
 # Curious facts
 During this development I've consumed:
-- 2 packs of cigarettes
+- 4 packs of cigarettes
 - 1 hot wings order
+- 1 fried chicken bucket
 - 7 pizza slices
-- 7 beer cans and 2 *caguamas*
+- 11 beer cans and 4 *caguamas*
 - 1 gummy bears pack
-- 2 packs of toasted bread
+- 1 pack of *picafresas* with 200 candies
+- 4 packs of toasted bread
 
 ###### Made with love in Mexico under the COVID-19 quarantine.
 ###### DEV1 Softworks S.A.S. de C.V.
