@@ -60,6 +60,7 @@
     <Compile Include="Source\Game\States\GameState.cs" />
     <Compile Include="Source\Game\States\MenuState.cs" />
     <Compile Include="Source\Engine\Utils\Camera.cs" />
+    <Compile Include="Source\Engine\Utils\HUD.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

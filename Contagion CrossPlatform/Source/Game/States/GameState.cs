@@ -13,15 +13,21 @@ namespace Contagion_CrossPlatform
     {
         Map map;
         Hero hero;
+        HUD hud;
+
         public GameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager contentManager) : base(game, graphicsDevice, contentManager)
         {
             map = new Map();
             hero = new Hero();
+            hud = new HUD(contentManager);
 
             map.Generate(new int[,]
             {
-                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,},
-                {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                {2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,},
+                {2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,},
+                {2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,},
                 {2,1,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,1,2,2,},
                 {2,2,1,1,1,0,0,0,0,1,1,2,2,2,1,0,0,0,0,2,2,},
                 {2,2,0,0,0,0,0,0,1,2,2,2,2,2,2,1,0,0,0,2,2,},
@@ -38,6 +44,7 @@ namespace Contagion_CrossPlatform
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, _game.camera.Transform);
             map.Draw(spriteBatch);
             hero.Draw(spriteBatch);
+            hud.Draw(spriteBatch);
             spriteBatch.End();
         }
 
