@@ -15,6 +15,7 @@ namespace Contagion_CrossPlatform
         SpriteBatch spriteBatch;
 
         public Camera camera;
+        private HUD hud;
 
         private State _currentState;
         private State _nextState;
@@ -43,6 +44,8 @@ namespace Contagion_CrossPlatform
         protected override void Initialize()
         {
             IsMouseVisible = true;
+
+            hud = new HUD(Content);
 
             base.Initialize();
         }
@@ -87,6 +90,7 @@ namespace Contagion_CrossPlatform
 
             _currentState.Update(gameTime);
             _currentState.PostUpdate(gameTime);
+            
 
             base.Update(gameTime);
         }
@@ -100,6 +104,11 @@ namespace Contagion_CrossPlatform
             GraphicsDevice.Clear(Color.Black);
 
             _currentState.Draw(gameTime, spriteBatch);
+
+            if(_currentState is GameState)
+            {
+                hud.Draw(spriteBatch);
+            }
 
             base.Draw(gameTime);
         }

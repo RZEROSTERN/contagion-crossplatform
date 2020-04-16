@@ -19,6 +19,8 @@ namespace Contagion_CrossPlatform
 
         private bool hasJumped = false;
 
+        public static int lives = 3;
+
         public Vector2 Position
         {
             get { return position; }

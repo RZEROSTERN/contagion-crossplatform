@@ -49,18 +49,6 @@
 /processorParam:TextureFormat=Color
 /build:Misc/MainMenu/titlescreen.png
 
-#begin Misc/SplashScreen/202761.jpg
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Misc/SplashScreen/202761.jpg;Misc/SplashScreen/test.jpg
-
 #begin Misc/SplashScreen/dev1logo.png
 /importer:TextureImporter
 /processor:TextureProcessor

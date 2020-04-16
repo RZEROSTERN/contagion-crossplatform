@@ -40,7 +40,11 @@ namespace Contagion_CrossPlatform
             else
                 center.Y = position.Y;
 
-            transform = Matrix.CreateTranslation(new Vector3(-center.X + (viewport.Width / 2), -center.Y + (viewport.Height / 2), 0));
+            Console.WriteLine(center.X + ", " + center.Y);
+
+            transform = Matrix.CreateTranslation(
+                new Vector3(-center.X + (viewport.Width / 2),
+                            -center.Y + (viewport.Height / 2), 0));
         }
     }
 }
