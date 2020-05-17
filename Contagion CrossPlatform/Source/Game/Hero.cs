@@ -31,6 +31,8 @@ namespace Contagion_CrossPlatform
         public void Load(ContentManager contentManager)
         {
             texture = TextureLoader.Load("Characters\\playertest", contentManager);
+            position.X = 200;
+            position.Y = 350;
         }
 
         public void Update(GameTime gameTime)

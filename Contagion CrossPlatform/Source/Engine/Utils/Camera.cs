@@ -33,18 +33,16 @@ namespace Contagion_CrossPlatform
             else
                 center.X = position.X;
 
-            if (position.Y < viewport.Height / 2)
-                center.Y = viewport.Height / 2;
+            if (position.Y < viewport.Height / 1.1f)
+                center.Y = viewport.Height / 1.1f;
             else if (position.Y > xOffset - (viewport.Height / 2))
                 center.Y = yOffset - (viewport.Height / 2);
             else
                 center.Y = position.Y;
 
-            Console.WriteLine(center.X + ", " + center.Y);
-
             transform = Matrix.CreateTranslation(
                 new Vector3(-center.X + (viewport.Width / 2),
-                            -center.Y + (viewport.Height / 2), 0));
+                            -center.Y + (viewport.Height - 48), 0));
         }
     }
 }
