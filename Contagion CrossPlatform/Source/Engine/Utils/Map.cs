@@ -24,7 +24,11 @@ namespace Contagion_CrossPlatform
                     int number = map[y, x];
 
                     if (number > 0)
+                    {
                         CollisionTiles.Add(new CollisionTiles(number, new Rectangle(x * size, y * size, size, size)));
+                    }
+
+                    
 
                     Width = (x + 1) * size;
                     Height = (y + 1) * size;
