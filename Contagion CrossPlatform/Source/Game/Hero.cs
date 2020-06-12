@@ -48,8 +48,6 @@ namespace Contagion_CrossPlatform
 
         private void CheckInput(GameTime gameTime)
         {
-            Console.WriteLine(Keyboard.GetState().IsKeyDown(Keys.D));
-
             if (Keyboard.GetState().IsKeyDown(Keys.D) == true)
                 velocity.X = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
             else if (Keyboard.GetState().IsKeyDown(Keys.A) == true)
