@@ -87,6 +87,7 @@
     <Compile Include="Source\Engine\Utils\Tiles.cs" />
     <Compile Include="Source\Game\Bullet.cs" />
     <Compile Include="Source\Game\Hero.cs" />
+    <Compile Include="Source\Game\States\LoadGameState.cs" />
     <Compile Include="Source\Game\States\SplashScreenState.cs" />
     <Compile Include="Source\Engine\Utils\State.cs" />
     <Compile Include="Source\Game\States\GameState.cs" />
