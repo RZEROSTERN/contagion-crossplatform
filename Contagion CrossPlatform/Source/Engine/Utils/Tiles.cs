@@ -43,4 +43,22 @@ namespace Contagion_CrossPlatform
             this.Rectangle = newRectangle;
         }
     }
+
+    class PowerUpTiles : Tiles
+    {
+        private const string PATH = "Misc\\Tiles\\Tile";
+        public PowerUpTiles(int powerup, Rectangle newRectangle)
+        {
+            string tile = PATH;
+
+            switch(powerup)
+            {
+                case 3: tile = PATH + "3"; break;
+                case 4: tile = PATH + "4"; break;
+            }
+
+            texture = Content.Load<Texture2D>(tile);
+            this.Rectangle = newRectangle;
+        }
+    }
 }

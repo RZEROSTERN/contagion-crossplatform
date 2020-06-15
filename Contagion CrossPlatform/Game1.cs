@@ -90,7 +90,8 @@ namespace Contagion_CrossPlatform
 
             _currentState.Update(gameTime);
             _currentState.PostUpdate(gameTime);
-            
+
+            Input.Update();
 
             base.Update(gameTime);
         }

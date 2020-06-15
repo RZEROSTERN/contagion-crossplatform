@@ -15,6 +15,7 @@ namespace Contagion_CrossPlatform
     {
         Map map;
         Hero hero;
+        private const String PATH = "Content\\Misc\\Levels\\";
 
         public static TimeSpan timer;
         public static int score = 0;
@@ -23,8 +24,9 @@ namespace Contagion_CrossPlatform
         {
             map = new Map();
             hero = new Hero();
+            hero.Initialize();
 
-            int[,] jsonLevel = loadJSON("Content\\Misc\\Levels\\level1.json");
+            int[,] jsonLevel = loadJSON(PATH + "level1.json");
 
             map.Generate(jsonLevel, 32);
 
