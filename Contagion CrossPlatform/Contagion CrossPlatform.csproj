@@ -81,6 +81,7 @@
     <Compile Include="Source\Engine\Utils\GameObject.cs" />
     <Compile Include="Source\Engine\Utils\Input.cs" />
     <Compile Include="Source\Engine\Utils\Map.cs" />
+    <Compile Include="Source\Engine\Utils\PowerUps.cs" />
     <Compile Include="Source\Engine\Utils\RectangleHelper.cs" />
     <Compile Include="Source\Engine\Utils\Resolution.cs" />
     <Compile Include="Source\Engine\Utils\TextureLoader.cs" />
@@ -167,6 +168,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\Misc\Bullets\bullet.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Misc\Bullets\plasmabullet.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\Misc\Levels\level1.json">

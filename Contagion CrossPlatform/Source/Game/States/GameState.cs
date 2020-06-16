@@ -52,7 +52,7 @@ namespace Contagion_CrossPlatform
 
             foreach (CollisionTiles tile in map.CollisionTiles)
             {
-                hero.Collision(tile.Rectangle, map.Width, map.Height);
+                hero.Collision(tile, map.Width, map.Height);
                 _game.camera.Update(hero.Position, map.Width, map.Height);
             }
 

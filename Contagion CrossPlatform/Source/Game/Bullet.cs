@@ -15,18 +15,29 @@ namespace Contagion_CrossPlatform
     {
         FireCharacter owner;
         int destroyTimer;
+        bool specialBullet = false;
 
         const int maxTimer = 180;
         const float speed = 8f;
 
-        public Bullet()
+        public bool SpecialBullet
+        {
+            get { return specialBullet; }
+            set { specialBullet = value; }
+        }
+
+        public Bullet(bool isSpecial = false)
         {
             active = false;
+            SpecialBullet = isSpecial;
         }
 
         public override void Load(ContentManager content)
         {
-            image = TextureLoader.Load("Misc\\Bullets\\bullet", content);
+            if(SpecialBullet == true)
+                image = TextureLoader.Load("Misc\\Bullets\\plasmabullet", content);
+            else
+                image = TextureLoader.Load("Misc\\Bullets\\bullet", content);
 
             base.Load(content);
         }
@@ -50,10 +61,9 @@ namespace Contagion_CrossPlatform
             active = false;
         }
 
-        public void Fire(FireCharacter inputOwner, Vector2 inputPosition, Vector2 inputDirection)
+        public void Fire(FireCharacter inputOwner, Vector2 inputPosition, Vector2 inputDirection, bool hasSpecialAmmo)
         {
-            Console.WriteLine(inputPosition.ToString());
-
+            Console.WriteLine(hasSpecialAmmo.ToString());
             owner = inputOwner;
             position = inputPosition;
             direction = inputDirection;

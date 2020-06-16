@@ -27,6 +27,24 @@ namespace Contagion_CrossPlatform
             get { return position; }
         }
 
+        public int Lives
+        {
+            get { return lives; }
+            set { lives = value; }
+        }
+
+        public int SpecialAmmo
+        {
+            get { return specialAmmo; }
+            set { specialAmmo = value; }
+        }
+
+        public bool HasSpecialAmmo
+        {
+            get { return hasSpecialAmmo; }
+            set { hasSpecialAmmo = value; }
+        }
+
         public Hero() { }
 
         public override void Initialize()
@@ -81,27 +99,55 @@ namespace Contagion_CrossPlatform
 
             if (Input.KeyPressed(Keys.J))
             {
-                Console.WriteLine(Position.ToString());
-                Fire();
+                Fire(HasSpecialAmmo);
+
+                if(hasSpecialAmmo && specialAmmo > 0)
+                {
+                    SpecialAmmo = SpecialAmmo - 1;
+                }
+
+                if(hasSpecialAmmo && specialAmmo == 0)
+                {
+                    HasSpecialAmmo = false;
+                    SpecialAmmo = 0;
+                }
             }
         }
 
-        public void Collision(Rectangle newRectangle, int xOffset, int yOffset)
+        public void Collision(Tiles tile, int xOffset, int yOffset)
         {
-            if (rectangle.TouchTopOf(newRectangle))
+            if (tile.Id == 3)
             {
-                rectangle.Y = newRectangle.Y - rectangle.Height;
+                if (rectangle.TouchTopOf(tile.Rectangle) || rectangle.TouchLeftOf(tile.Rectangle) ||
+                    rectangle.TouchBottomOf(tile.Rectangle) || rectangle.TouchRightOf(tile.Rectangle))
+                {
+                    OneUpPowerUp.OneUp(this, tile);
+                }
+            }
+
+            if (tile.Id == 4)
+            {
+                if(rectangle.TouchTopOf(tile.Rectangle) || rectangle.TouchLeftOf(tile.Rectangle) || 
+                    rectangle.TouchBottomOf(tile.Rectangle) || rectangle.TouchRightOf(tile.Rectangle))
+                {
+                    PlasmaPowerUp.AssignPowerUp(this, tile);
+                }
+            }
+
+            if (rectangle.TouchTopOf(tile.Rectangle) && tile.Active == true)
+            {
+                rectangle.Y = tile.Rectangle.Y - rectangle.Height;
                 velocity.Y = 0f;
                 hasJumped = false;
             }
 
-            if (rectangle.TouchLeftOf(newRectangle))
-                position.X = newRectangle.X - rectangle.Width - 2;
+            if (rectangle.TouchLeftOf(tile.Rectangle) && tile.Active == true)
+                position.X = tile.Rectangle.X - rectangle.Width - 2;
 
-            if (rectangle.TouchRightOf(newRectangle))
-                position.X = newRectangle.X + newRectangle.Width + 2;
+            if (rectangle.TouchRightOf(tile.Rectangle) && tile.Active == true)
+                position.X = tile.Rectangle.X + tile.Rectangle.Width + 2;
 
-            if (rectangle.TouchBottomOf(newRectangle))
+            if (rectangle.TouchBottomOf(tile.Rectangle) && tile.Active == true)
                 velocity.Y = 1f;
 
             if (position.X < 0)
@@ -115,11 +161,6 @@ namespace Contagion_CrossPlatform
 
             if (position.Y > yOffset - rectangle.Height)
                 position.Y = yOffset - rectangle.Height;
-        }
-
-        public void CollisionPowerUps(Rectangle newRectangle, int xOffset, int yOffset)
-        {
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)

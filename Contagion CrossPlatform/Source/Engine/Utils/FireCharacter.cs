@@ -58,13 +58,13 @@ namespace Contagion_CrossPlatform
             base.Update(gameTime);
         }
 
-        public void Fire()
+        public void Fire(bool hasSpecialAmmo)
         {
             for(int i = 0; i < numOfBullets; i++)
             {
                 if(bullets[i].active == false)
                 {
-                    bullets[i].Fire(this, position, direction);
+                    bullets[i].Fire(this, position, direction, hasSpecialAmmo);
                     break;
                 }
             }

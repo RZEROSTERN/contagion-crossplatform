@@ -12,13 +12,26 @@ namespace Contagion_CrossPlatform
     class Tiles
     {
         protected Texture2D texture;
-
+        protected int id;
+        protected bool active = true;
         private Rectangle rectangle;
 
         public Rectangle Rectangle
         {
             get { return rectangle; }
             protected set { rectangle = value; }
+        }
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public bool Active
+        {
+            get { return active; }
+            set { active = value; }
         }
 
         private static ContentManager content;
@@ -31,7 +44,8 @@ namespace Contagion_CrossPlatform
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, rectangle, Color.White);
+            if(active)
+                spriteBatch.Draw(texture, rectangle, Color.White);
         }
     }
 
@@ -40,24 +54,7 @@ namespace Contagion_CrossPlatform
         public CollisionTiles(int i, Rectangle newRectangle)
         {
             texture = Content.Load<Texture2D>("Misc\\Tiles\\Tile" + i);
-            this.Rectangle = newRectangle;
-        }
-    }
-
-    class PowerUpTiles : Tiles
-    {
-        private const string PATH = "Misc\\Tiles\\Tile";
-        public PowerUpTiles(int powerup, Rectangle newRectangle)
-        {
-            string tile = PATH;
-
-            switch(powerup)
-            {
-                case 3: tile = PATH + "3"; break;
-                case 4: tile = PATH + "4"; break;
-            }
-
-            texture = Content.Load<Texture2D>(tile);
+            id = i;
             this.Rectangle = newRectangle;
         }
     }
