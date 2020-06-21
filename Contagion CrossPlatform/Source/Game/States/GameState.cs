@@ -15,6 +15,7 @@ namespace Contagion_CrossPlatform
     {
         Map map;
         Hero hero;
+        Enemy enemy;
         private const String PATH = "Content\\Misc\\Levels\\";
 
         public static TimeSpan timer;
@@ -24,13 +25,17 @@ namespace Contagion_CrossPlatform
         {
             map = new Map();
             hero = new Hero();
+            enemy = new Enemy();
+
             hero.Initialize();
+            enemy.Initialize();
 
             int[,] jsonLevel = loadJSON(PATH + "level1.json");
 
             map.Generate(jsonLevel, 32);
 
             hero.Load(contentManager);
+            enemy.Load(contentManager);
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -38,6 +43,7 @@ namespace Contagion_CrossPlatform
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, _game.camera.Transform);
             map.Draw(spriteBatch);
             hero.Draw(spriteBatch);
+            enemy.Draw(spriteBatch);
             spriteBatch.End();
         }
 
@@ -49,10 +55,12 @@ namespace Contagion_CrossPlatform
         public override void Update(GameTime gameTime)
         {
             hero.Update(gameTime);
+            enemy.Update(gameTime);
 
             foreach (CollisionTiles tile in map.CollisionTiles)
             {
                 hero.Collision(tile, map.Width, map.Height);
+                enemy.Collision(tile, map.Width, map.Height);
                 _game.camera.Update(hero.Position, map.Width, map.Height);
             }
 

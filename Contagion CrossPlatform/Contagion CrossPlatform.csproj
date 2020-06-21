@@ -59,10 +59,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>E61BA730BD383DF8CC9A0AC6E96B86287CFA6BC9</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>073EADCD92A0D708F5EACAD10340A05417C8F8C6</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Contagion CrossPlatform_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Contagion CrossPlatform_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -88,6 +88,7 @@
     <Compile Include="Source\Engine\Utils\Tiles.cs" />
     <Compile Include="Source\Game\Bullet.cs" />
     <Compile Include="Source\Game\Hero.cs" />
+    <Compile Include="Source\Game\NPC\Enemy.cs" />
     <Compile Include="Source\Game\States\LoadGameState.cs" />
     <Compile Include="Source\Game\States\SplashScreenState.cs" />
     <Compile Include="Source\Engine\Utils\State.cs" />
@@ -157,7 +158,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="app.manifest" />
+    <None Include="Contagion CrossPlatform_1_TemporaryKey.pfx" />
     <None Include="Contagion CrossPlatform_TemporaryKey.pfx" />
+    <None Include="Content\Characters\enemytest.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Content\Characters\playertest.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
