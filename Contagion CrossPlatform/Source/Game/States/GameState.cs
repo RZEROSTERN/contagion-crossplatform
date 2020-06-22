@@ -57,11 +57,21 @@ namespace Contagion_CrossPlatform
             hero.Update(gameTime);
             enemy.Update(gameTime);
 
+
+            enemy.CollisionWithHero(hero);
+
             foreach (CollisionTiles tile in map.CollisionTiles)
             {
                 hero.Collision(tile, map.Width, map.Height);
                 enemy.Collision(tile, map.Width, map.Height);
+
                 _game.camera.Update(hero.Position, map.Width, map.Height);
+            }
+
+            foreach (Bullet bullet in hero.bullets)
+            {
+                if (bullet.active == true)
+                    bullet.Collision(map, enemy);
             }
 
             timer += gameTime.ElapsedGameTime;

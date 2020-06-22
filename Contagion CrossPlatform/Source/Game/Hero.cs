@@ -14,7 +14,7 @@ namespace Contagion_CrossPlatform
     {
         private Texture2D texture;
         private Vector2 velocity;
-        private Rectangle rectangle;
+        public Rectangle rectangle;
 
         private bool hasJumped = false;
 

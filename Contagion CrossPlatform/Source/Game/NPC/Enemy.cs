@@ -13,7 +13,7 @@ namespace Contagion_CrossPlatform
     class Enemy : FireCharacter
     {
         private Texture2D texture;
-        private Rectangle rectangle;
+        public Rectangle rectangle;
         private Vector2 velocity;
         private bool hasJumped = false;
 
@@ -25,6 +25,7 @@ namespace Contagion_CrossPlatform
         public override void Load(ContentManager content)
         {
             texture = TextureLoader.Load("Characters\\enemytest", content);
+
             position.X = 750;
             position.Y = 350;
 
@@ -33,6 +34,9 @@ namespace Contagion_CrossPlatform
 
         public override void Update(GameTime gameTime)
         {
+            if (active == false)
+                return;
+
             position += velocity;
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
@@ -74,10 +78,27 @@ namespace Contagion_CrossPlatform
                 position.Y = yOffset - rectangle.Height;
         }
 
+        public void CollisionWithHero(Hero hero)
+        {
+            if ((rectangle.TouchTopOf(hero.rectangle) || rectangle.TouchBottomOf(hero.rectangle)
+                || rectangle.TouchLeftOf(hero.rectangle) || rectangle.TouchRightOf(hero.rectangle)) && active == true)
+            {
+                hero.Lives -= 1;
+                Destroy();
+            }
+        }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, rectangle, Color.White);
+            if(active == true)
+                spriteBatch.Draw(texture, rectangle, Color.White);
+            
             base.Draw(spriteBatch);
+        }
+
+        public void Destroy()
+        {
+            active = false;
         }
     }
 }

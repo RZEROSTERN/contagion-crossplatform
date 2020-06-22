@@ -11,9 +11,9 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Contagion_CrossPlatform 
 { 
-    public class FireCharacter : GameObject
+    class FireCharacter : GameObject
     {
-        List<Bullet> bullets = new List<Bullet>();
+        public List<Bullet> bullets = new List<Bullet>();
         const int numOfBullets = 20;
 
         public FireCharacter()
@@ -54,6 +54,8 @@ namespace Contagion_CrossPlatform
         {
             for (int i = 0; i < numOfBullets; i++)
                 bullets[i].Update(gameTime);
+
+            
 
             base.Update(gameTime);
         }

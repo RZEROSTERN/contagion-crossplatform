@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Contagion_CrossPlatform
 {
-    public class Bullet : GameObject
+    class Bullet : GameObject
     {
         FireCharacter owner;
         int destroyTimer;
@@ -20,6 +20,8 @@ namespace Contagion_CrossPlatform
 
         const int maxTimer = 180;
         const float speed = 8f;
+
+        private Rectangle rectangle;
 
         public bool SpecialBullet
         {
@@ -56,6 +58,8 @@ namespace Contagion_CrossPlatform
 
             position += direction * speed;
 
+            rectangle = new Rectangle((int)position.X, (int)position.Y, image.Width, image.Height);
+
             destroyTimer--;
 
             if (destroyTimer <= 0 && active == true)
@@ -77,6 +81,31 @@ namespace Contagion_CrossPlatform
             direction = inputDirection;
             active = true;
             destroyTimer = maxTimer;
+        }
+
+        public void Collision(Map map, Enemy enemy = null)
+        {
+            foreach(Tiles tile in map.CollisionTiles)
+            {
+                if ((rectangle.TouchLeftOf(tile.Rectangle) || rectangle.TouchRightOf(tile.Rectangle)) && (tile.Id != 3 && tile.Id != 4))
+                {
+                    Destroy();
+                    break;
+                }
+            }
+
+            if(enemy != null)
+            {
+                if(enemy.active == true)
+                {
+                    if (rectangle.TouchLeftOf(enemy.BoundingBox) || rectangle.TouchRightOf(enemy.BoundingBox))
+                    {
+                        enemy.Destroy();
+                        GameState.score += 100;
+                        Destroy();
+                    }
+                }
+            }
         }
     }
 }
