@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 
 namespace Contagion_CrossPlatform
 {
-    class Enemy : FireCharacter
+    class Enemy : AIFireCharacter
     {
         private Texture2D texture;
         public Rectangle rectangle;
         private Vector2 velocity;
         private bool hasJumped = false;
+        private bool goRight = true, goLeft = false;
 
         public override void Initialize()
         {
@@ -39,12 +40,44 @@ namespace Contagion_CrossPlatform
 
             position += velocity;
 
+            Move(gameTime);
+
             rectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
 
             if (velocity.Y < 10)
                 velocity.Y += 0.4f;
 
             base.Update(gameTime);
+        }
+
+        public void Move(GameTime gameTime)
+        {
+            if(goRight == true && goLeft == false)
+            {
+                velocity.X = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
+                direction.X = 1;
+            }
+
+            if(goLeft == true && goRight == false)
+            {
+                velocity.X = -(float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
+                direction.X = -1;
+            }
+        }
+
+        public void Flip()
+        {
+            if(goRight == true && goLeft == false)
+            {
+                goRight = false;
+                goLeft = true;
+            } else if(goLeft == true && goRight == false)
+            {
+                goLeft = false;
+                goRight = true;
+            }
+
+            Console.WriteLine(goLeft + "," + goRight);
         }
 
         public void Collision(Tiles tile, int xOffset, int yOffset)
@@ -57,10 +90,16 @@ namespace Contagion_CrossPlatform
             }
 
             if (rectangle.TouchLeftOf(tile.Rectangle) && tile.Active == true)
+            {
                 position.X = tile.Rectangle.X - rectangle.Width - 2;
+                Flip();
+            }
 
             if (rectangle.TouchRightOf(tile.Rectangle) && tile.Active == true)
+            {
                 position.X = tile.Rectangle.X + tile.Rectangle.Width + 2;
+                Flip();
+            }
 
             if (rectangle.TouchBottomOf(tile.Rectangle) && tile.Active == true)
                 velocity.Y = 1f;

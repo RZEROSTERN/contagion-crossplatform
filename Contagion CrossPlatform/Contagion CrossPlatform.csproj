@@ -74,6 +74,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\Engine\Utils\AIFireCharacter.cs" />
     <Compile Include="Source\Engine\Utils\Component.cs" />
     <Compile Include="Source\Engine\Controls\Button.cs" />
     <Compile Include="Source\Engine\Global.cs" />
