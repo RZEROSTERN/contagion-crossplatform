@@ -16,7 +16,7 @@ namespace Contagion_CrossPlatform
         public Rectangle rectangle;
         private Vector2 velocity;
         private bool hasJumped = false;
-        private bool goRight = true, goLeft = false;
+        private bool goRight = true, goLeft = false, disabledFlipRight = false, disabledFlipLeft = false;
 
         public override void Initialize()
         {
@@ -67,17 +67,20 @@ namespace Contagion_CrossPlatform
 
         public void Flip()
         {
-            if(goRight == true && goLeft == false)
+            if(goRight == true && goLeft == false && hasJumped == false)
             {
                 goRight = false;
                 goLeft = true;
-            } else if(goLeft == true && goRight == false)
+                disabledFlipLeft = true;
+                disabledFlipRight = false;
+            } 
+            else if(goLeft == true && goRight == false && hasJumped == false)
             {
                 goLeft = false;
                 goRight = true;
+                disabledFlipLeft = false;
+                disabledFlipRight = true;
             }
-
-            Console.WriteLine(goLeft + "," + goRight);
         }
 
         public void Collision(Tiles tile, int xOffset, int yOffset)
@@ -89,15 +92,14 @@ namespace Contagion_CrossPlatform
                 hasJumped = false;
             }
 
-            if (rectangle.TouchLeftOf(tile.Rectangle) && tile.Active == true)
+            if (rectangle.TouchLeftOf(tile.Rectangle) && tile.Active == true && disabledFlipLeft == false)
             {
-                position.X = tile.Rectangle.X - rectangle.Width - 2;
                 Flip();
             }
 
-            if (rectangle.TouchRightOf(tile.Rectangle) && tile.Active == true)
+
+            if (rectangle.TouchRightOf(tile.Rectangle) && tile.Active == true && disabledFlipRight == false)
             {
-                position.X = tile.Rectangle.X + tile.Rectangle.Width + 2;
                 Flip();
             }
 
